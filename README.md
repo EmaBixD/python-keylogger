@@ -30,7 +30,7 @@ With prompt opened in the same directory of example.py type:
  		keylogger.exe
  		```
 	- `Modes` -> Check "Unpack to temporary folder", select "Hide all"
-	- `(OPTIONAL) Text and icon` -> "Load SFX icon from the file" to give a preview of the file
+	- `(OPTIONAL but reccommended) Text and icon` -> "Load SFX icon from the file" to give a preview of the file
 	- `Update` -> Check "Overwrite all files"
 4. Confirm all
 
