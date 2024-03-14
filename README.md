@@ -9,11 +9,8 @@ This is a collection of multiple codes put together. It aims for stability, open
 Make sure to enter your email address and password for sending and receiving emails in the [keylogger.py](https://github.com/EmaBixD/python-keylogger/edit/main/keylogger.py) file.
 
 ## BUILD AN EXECUTABLE FROM PYTHON FILE
-### Installing pip
-- `py get-pip.py`
-
 ### Installing pyinstaller with pip
-- `pip install pyinstaller`
+In prompt enter: `pip install pyinstaller`
 
 ### Compiling .py in .exe using pyinstaller
 With prompt opened in the same directory of example.py type:
