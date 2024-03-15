@@ -5,6 +5,7 @@ It aims for stability, open source, and constant updates.
 
 ## Requirements
 - pynput
+- requests
 
 ## Configuration
 Make sure to enter your email address and password for sending and receiving emails in the [keylogger.py](https://github.com/EmaBixD/python-keylogger/edit/main/keylogger.py) file.
