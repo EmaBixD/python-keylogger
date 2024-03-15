@@ -1,7 +1,7 @@
 # [python-keylogger](https://github.com/EmaBixD/python-keylogger)
-Keylogger made with python that records keys and sends them to an email address.
+Keylogger made with python that records keys and sends them to an email address, also supports IP logging.
 
-This is a collection of multiple codes put together. It aims for stability, open source, and constant updates.
+It aims for stability, open source, and constant updates.
 
 ## Requirements
 - pynput
