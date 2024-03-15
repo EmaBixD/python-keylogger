@@ -49,7 +49,7 @@ The .vbs file, is simply used to call the .bat file without the prompt appearing
 *In the future this will be probably simplified in a sigle file*
 
 ## Known bugs:
-- [ ]  Slow and laggy typing while keylogger is active, will be fixed soon
+- [x] *FIXED* Slow and laggy typing while keylogger is active, will be fixed soon
 
 # ⚠ DISCLAIMER ⚠
 Usage of the provided code is at your own risk. The author assumes no responsibility for any actions taken with the code. Please ensure compliance with applicable laws and use the code responsibly. ❗
