@@ -28,15 +28,13 @@ def send_startup_email():
 def send_email(subject, message):
     smtp_server = "smtp.gmail.com"
     port = 587 
-    sender_email = "sender - email - here"
-    password = "sender - password - here"
-    receiver_email = "receiver - email - here"
+    sender_email = "sender.email@here" #  edit
+    password = "sender-password-here" # edit
+    receiver_email = "receiver.email@here" # edit
     context = ssl.create_default_context()
     try:
         server = smtplib.SMTP(smtp_server, port)
-        server.ehlo() 
         server.starttls(context=context) 
-        server.ehlo()
         server.login(sender_email, password)
         email_message = f"Subject: {subject} - {ipv4_address}\n\n{message}"
         server.sendmail(sender_email, receiver_email, email_message)
